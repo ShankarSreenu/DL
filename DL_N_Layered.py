@@ -196,3 +196,17 @@ X=X_flatten/255
 network.test_dataset(X,Y)
 
 
+#to resize the image
+#path is to be givien
+def resize(path):
+    dirs = os.listdir(path)
+    i=0
+    for item in dirs:
+        if os.path.isfile(path+item):
+            i=i+1
+            im = Image.open(path+item)
+            f, e = os.path.splitext(path+item)
+            imResize = im.resize((50,50), Image.ANTIALIAS)
+            imResize.save("/home/shanky/btp/datset/final_test/"+'freshapple'+str(i)+'-0.png', 'PNG', quality=90)
+
+resize("/home/shanky/btp/datset/freshapples/")
